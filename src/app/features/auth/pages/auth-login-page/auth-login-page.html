@@ -1,0 +1,24 @@
+<form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="username-input">username:</label>
+    <input
+      type="text"
+      id="username-input"
+      formControlName="username"
+      [ngClass]="{ 'input-error': username.invalid && username.touched }"
+    />
+    <app-forms-error-display [control]="username" name="Username" />
+  </div>
+  <div>
+    <label for="password-input">Password:</label>
+    <input
+      type="password"
+      id="password-input"
+      formControlName="password"
+      [ngClass]="{ 'input-error': password.invalid && password.touched }"
+    />
+    <app-forms-error-display [control]="password" name="Password" />
+  </div>
+  <button type="submit" [disabled]="formLogin.invalid">Login</button>
+</form>
+<a routerLink="/auth/register">Do you want to create an account?</a>

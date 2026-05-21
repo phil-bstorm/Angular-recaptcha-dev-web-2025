@@ -48,12 +48,13 @@ export class AuthService {
     }
   }
 
-  async login(username: string, password: string): Promise<void> {
+  async login(username: string, password: string, reCAPTCHAToken: string): Promise<void> {
     // appel API
     const response = await firstValueFrom(
       this._httpClient.post<LoginResponse>(this._apiUrl + '/auth/login', {
         username: username,
         password: password,
+        reCAPTCHAToken,
       }),
     );
 
